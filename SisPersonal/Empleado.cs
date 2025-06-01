@@ -58,5 +58,32 @@ namespace EspacioEmpleados
 
             return edad;
         }
+
+        public double CalcularSalario()
+        {
+            // sueldo = sueldoBasico + adicional
+            int antiguedad = Antiguedad();
+            double incremento;
+
+            if (antiguedad < 20)
+            {
+                incremento = Sueldo * 0.01 * Antiguedad();
+            }
+            else
+            {
+                incremento = Sueldo * 0.25;
+            }
+
+            if (Cargos == Cargo.Especialista || Cargos == Cargo.Ingeniero)
+            {
+                incremento = incremento + (incremento * 0.50);
+            }
+
+
+            double salario = Sueldo + incremento;
+
+            return salario;
+
+        }
     }
 }
